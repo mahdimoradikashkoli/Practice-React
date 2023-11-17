@@ -5,4 +5,5 @@ import "./index.css"
 const getRoot=document.getElementById("root")
 
 const root=ReactDOM.createRoot(getRoot!)
+
 root.render(<App/>)

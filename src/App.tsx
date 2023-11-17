@@ -1,3 +1,23 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { AuthLayout } from "./components"
+import { SignUp } from "./pages"
+
+
 export const App=()=>{
-  return <h1 className="bg-blue-300">Hello React</h1>
+
+  const router= createBrowserRouter([
+    {
+      path:"/auth",
+      element: <AuthLayout />,
+      children:[
+        {
+          path:"/auth/signup",
+          element:<SignUp/>
+        }
+      ]
+      
+    }
+  ])
+
+  return <RouterProvider router={router}/>
 }
