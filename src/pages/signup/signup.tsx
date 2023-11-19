@@ -47,20 +47,22 @@ export const SignUp = () => {
       parsGetUsers.push(Data);
       const jsonGetUsers = JSON.stringify(parsGetUsers);
       localStorage.setItem("users", jsonGetUsers);
+      location.assign("/auth/signin")
     } else {
       const jsonData = JSON.stringify([Data]);
       localStorage.setItem("users", jsonData);
+      location.assign("/auth/signin")
     }
   });
 
   return (
-    <div className="flex items-center justify-center mt-1.5">
+    <div className="flex items-center justify-center mt-2">
       <form
         onSubmit={handleSignUpmForm}
         className="bg-slate-600 p-3 rounded-md w-1/3 h-96 overflow-auto"
       >
         <div className="flex items-center justify-center ">
-          <h3 className="font-medium text-xl">Sign Up</h3>
+          <h3 className="font-medium text-xl text-white">Sign Up</h3>
         </div>
         <Textfeild
           label="Inter your name"
