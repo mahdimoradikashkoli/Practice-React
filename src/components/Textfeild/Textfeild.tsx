@@ -21,14 +21,13 @@ export const Textfeild: FC<TextfeildProps> = ({
       {Boolean(label) && <label className="ps-1 " htmlFor={id}>
         {label}
       </label>}
-      <div className="flex items-center bg-white ps-1  border-2 border-transparent hover:border-blue-700 rounded-md  ">
-        {Boolean(icon) && <img src={icon}alt="" />}
+      <div className="flex items-center bg-white  gap-0.5  rounded-md overflow-hidden focus-within:border-2 focus-within:border-blue-600 border-2 border-transparent">
+        {Boolean(icon) && <img className="px-0.5" src={icon}alt="" />}
         <input
-          
-          className="bg-transparent outline-none  rounded-md px-1 text-sm py-2 border-none  w-full"
+          className="bg-transparent outline-none   p-2 text-sm  border-none  w-full h-full"
           {...restProps}
-          {...validation}
           id={id}
+          {...validation}
         />
       </div>
       {Boolean(helperText) && <p className="text-sm ps-1 mt-0.5 text-red-600">{helperText}</p>}

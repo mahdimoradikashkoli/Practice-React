@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import { AuthLayout } from "./components"
-import { SignUp } from "./pages"
+import { AuthLayout, Layout } from "./components"
+import { HomePage, SignIn, SignUp } from "./pages"
 
 
 export const App=()=>{
@@ -13,7 +13,22 @@ export const App=()=>{
         {
           path:"/auth/signup",
           element:<SignUp/>
+        },
+        {
+          path:"/auth/signin",
+          element:<SignIn/>
         }
+      ]
+      
+    },
+    {
+      path:"/",
+      element: <Layout/>,
+      children:[
+        {
+          path:"/",
+          element:<HomePage/>
+        },
       ]
       
     }
