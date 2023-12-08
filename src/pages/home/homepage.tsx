@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form";
 import { GetUsers } from "../../components";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -51,7 +52,7 @@ export const HomePage = () => {
       <div className="flex gap-5">
         <div className="w-1/2 h-96 bg-gray-400 rounded-md px-3 py-1  overflow-auto">
           <div className=" flex flex-col gap-2">
-            {Boolean(parseGetUsers)
+            {(parseGetUsers && parseGetUsers.length === "0")
               ? parseGetUsers?.map((user: any) => {
                   return (
                     <div className="p-1 border-2 border-white rounded-md flex justify-between">
