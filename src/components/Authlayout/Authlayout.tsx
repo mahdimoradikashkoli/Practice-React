@@ -1,20 +1,22 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "..";
+import web from "/image/img2jpg.jpg"
 
 export const AuthLayout = () => {
   return (
     <>
       <Header />
       <div
-        className=" p-3 object-cover"
+        className=" p-3 object-cover fixed w-full"
         style={{
-          height: "100%",
+          
+          height: "1000px",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           overflow: "hidden",
           backgroundImage:
-            "url(https://bahalmag.ir/wp-content/uploads/2020/02/photo-1550645612-83f5d594b671.jpg)",
+            `url(${web})`,
         }}
       >
         <div className="flex items-center justify-center">
