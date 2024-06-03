@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, ReactNode, useId } from "react";
 
 interface TextfeildProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -24,6 +25,7 @@ export const Textfeild: FC<TextfeildProps> = ({
       <div className="flex items-center bg-white  gap-0.5  rounded-md overflow-hidden focus-within:border-2 focus-within:border-blue-600 border-2 border-transparent">
         {Boolean(icon) && <img className="px-0.5" src={icon}alt="" />}
         <input
+        
           className="bg-transparent outline-none   p-2 text-sm  border-none  w-full h-full"
           {...restProps}
           id={id}

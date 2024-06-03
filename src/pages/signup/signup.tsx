@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import { Button, Textfeild } from "../../components";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/src/yup.js";
+import { useNavigate } from "react-router-dom";
+import {userType} from "./type"
 
 export const SignUp = () => {
+  const navigate=useNavigate()
 
   const signUpSchema = Yup.object({
     name: Yup.string().required("name is required"),
@@ -36,22 +39,32 @@ export const SignUp = () => {
     console.log(parsGetUsers);
 
     if (parsGetUsers) {
-      const existUser = parsGetUsers.find((user) => user.email === Data.email);
+      const existUser = parsGetUsers.find((user:userType ) => user.email === Data.email);
       if (existUser) return alert("email already is exist");
 
       const existPhoneNumber = parsGetUsers.find(
-        (user) => user.phonenumber === Data.phonenumber
+        (user:userType) => user.phonenumber === Data.phonenumber
       );
       if (existPhoneNumber) return alert("phone number already exist");
 
       parsGetUsers.push(Data);
       const jsonGetUsers = JSON.stringify(parsGetUsers);
       localStorage.setItem("users", jsonGetUsers);
-      location.assign("/auth/signin")
+      navigate("/auth/signin",{
+        state:{
+          email:Data.email,
+          password:Data.password
+        }
+      })
     } else {
       const jsonData = JSON.stringify([Data]);
       localStorage.setItem("users", jsonData);
-      location.assign("/auth/signin")
+      navigate("/auth/signin",{
+        state:{
+          email:Data.email,
+          password:Data.password
+        }
+      })
     }
   });
 

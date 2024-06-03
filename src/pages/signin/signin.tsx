@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Button, Textfeild } from "./../../components";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/src/yup.js";
+import { useLocation } from "react-router-dom";
 
 export const SignIn = () => {
   const signInSchema = Yup.object({
@@ -18,6 +19,10 @@ export const SignIn = () => {
   } = useForm({
     resolver: yupResolver(signInSchema),
   });
+  const location = useLocation();
+ const { email, password } = location.state || {}
+
+  // console.log(email, password);
 
   const handleSignInForm = handleSubmit((Data) => {
     console.log(Data);
@@ -31,7 +36,7 @@ export const SignIn = () => {
     );
 
     if (existUser) {
-      location.assign("/");
+      window.location.assign("/");
     } else {
       return alert("user is not exist");
     }
@@ -48,6 +53,7 @@ export const SignIn = () => {
         </div>
 
         <Textfeild
+        defaultValue={email ? email : ""}
           placeholder="Example:mahdi@gmail.com"
           label="inter your email adress!!"
           helperText={errors.email?.message ?? ""}
@@ -55,6 +61,7 @@ export const SignIn = () => {
           validation={register("email")}
         />
         <Textfeild
+        defaultValue={password  ? password :""}
           type="password"
           label="inter your password"
           validation={register("password")}
